@@ -7,11 +7,13 @@ import employeeRoutes from './routes/employeeRoutes.js';
 dotenv.config();
 
 const app = express();
-
+app.use(express.urlencoded({ extended: true }));
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
 // Middlewares
 app.use(express.json());
 app.use(cors());
-
 // Routes
 app.use('/', userRoutes);         // User authentication routes
 app.use('/', employeeRoutes);     // Employee routes
